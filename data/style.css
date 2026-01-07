@@ -1,0 +1,230 @@
+:root {
+  --yellow: #fcc72d;
+  --orange: #ea6d3d;
+  --red: #e03a3c;
+  --pink: #cb1f73;
+  --dark: #383a6b;
+  --bg: #1e1f2f;
+  --card: #2a2c44;
+  --text: #ffffff;
+  --muted: #b0b2d6;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  height: 100vh;
+}
+
+.sidebar {
+  background: var(--card);
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.sidebar.right {
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.app {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emergency-stop {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--red);
+  color: white;
+  font-size: 20px;
+}
+
+.status-box {
+  background: var(--card);
+  padding: 14px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.status-box.idle {
+  color: var(--yellow);
+}
+
+.status-box.running {
+  color: var(--orange);
+}
+
+.progress-ring circle {
+  fill: none;
+  stroke: rgba(255,255,255,0.2);
+  stroke-width: 4;
+}
+
+#progressCircle {
+  stroke: var(--yellow);
+  stroke-width: 4;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.pump-card, .recipe-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+select, input {
+  width: 100%;
+  background: #1c1d30;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  color: white;
+  margin-top: 6px;
+}
+
+.btn {
+  border: none;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--orange);
+}
+
+.btn.calibrate {
+  background: var(--yellow);
+  margin-top: 6px;
+}
+
+.btn.start {
+  background: var(--yellow);
+}
+
+.btn.delete {
+  background: transparent;
+  color: var(--red);
+}
+
+.add-ingredient {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.ingredient-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.pump-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85em;
+  margin: 6px 0;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-dot.ok {
+  background: #4caf50;
+}
+
+.status-dot.bad {
+  background: var(--red);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  width: 300px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+.recipes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-content.large {
+  width: 360px;
+}
+
+.recipe-ingredient-row {
+  display: grid;
+  grid-template-columns: 1fr 70px auto;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.recipe-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.recipe-actions {
+  display: flex;
+  gap: 6px;
+}
+
+#startModal .modal-content input {
+  margin: 12px 0;
+}
+
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
